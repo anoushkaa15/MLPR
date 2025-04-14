@@ -1,0 +1,8 @@
+torch
+torchaudio
+librosa
+matplotlib
+numpy
+demucs
+einops
+pydub
