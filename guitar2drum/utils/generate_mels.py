@@ -1,5 +1,3 @@
-# utils/generate_mels.py
-
 import os
 import librosa
 import numpy as np
