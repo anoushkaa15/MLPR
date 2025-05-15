@@ -30,6 +30,7 @@ Scripts for preprocessing are provided:
 ## Project Structure
 
 ```
+guitar2drum/
 ├── train/
 │   ├── config.py              # Configuration constants
 │   ├── transformer_train.py   # Training loop
@@ -39,5 +40,6 @@ Scripts for preprocessing are provided:
 │   ├── generate_mels.py       # Converts .wav to Mel spectrograms
 │   ├── generate_ssms.py       # Converts Mel spectrograms to SSMs
 │   ├── dataset.py             # Dataset utilities
-├── requirements.txt           # Python dependencies             
+├── requirements.txt           # Python dependencies
+
 ```
