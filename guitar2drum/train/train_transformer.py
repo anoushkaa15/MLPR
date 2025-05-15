@@ -1,3 +1,20 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import DataLoader
+from torch.optim.lr_scheduler import CosineAnnealingLR
+from torch.cuda.amp import autocast, GradScaler
+import math
+
+from train.config import (
+    BASE_PATH, DEVICE, FRAME_RATE, INTERVAL_FRAMES, STRIDE_FRAMES,
+    MEL_SIZE, SSM_TARGET_SIZE, BATCH_SIZE, EPOCHS, VAL_SPLIT, CHECKPOINT_PATH
+)
+
+from utils.dataset import MultiFolderGuitarToDrumDataset, MelSSMDataset
+from models.transformer import DrumTransformer
+
+
 # ========== TRAINING ==========
 def train_model():
     raw = MultiFolderGuitarToDrumDataset()
@@ -60,3 +77,5 @@ def train_model():
             torch.save(model.state_dict(), CHECKPOINT_PATH)
             print(f"Saved checkpoint (val loss = {avg_vl:.4f})")
 
+if __name__ == "__main__":
+    train_model()
