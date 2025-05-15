@@ -4,5 +4,41 @@ The challenge of generating expressive and coherent drum accompaniments remains 
 
 Our project aims to address these limitations by leveraging a hybrid architecture that combines Self-Similarity Matrices (SSMs), Transformer networks, and Diffusion Models to generate realistic and stylistically responsive drum accompaniments from guitar tracks. Unlike previous models, which separately predict rhythm and dynamics or rely on MIDI-only input, our multitask system jointly learns to predict both the drum SSM and the corresponding drum Mel-spectrogram, enhancing temporal precision and musical alignment.
 
-The dataset was constructed by performing source separation on 710 publicly available multitrack metal and rock songs using Demucs, yielding paired guitar and drum audio. Mel-spectrograms and SSMs were extracted using Short-Time Fourier Transform (STFT) and cosine similarity for feature representation. The Transformer was trained in a multitask setup using cross-attention layers to condition drum generation on both guitar structure and timbre. A diffusion model was then used to reconstruct the drum audio waveform from the predicted SSM, constrained by learned structural priors.
+## Dataset Preparation
+
+We used 710 publicly available multitrack rock and metal songs. Each song was source-separated into `guitar.wav` and `drums.wav` using [Demucs](https://github.com/facebookresearch/demucs). These were then converted to:
+
+- Mel spectrograms using Librosa with:
+  - Sample rate = 22050
+  - n_fft = 2048
+  - hop_length = 512
+  - n_mels = 128
+
+- SSMs (Self-Similarity Matrices) by computing cosine similarity over time-normalized Mel spectrograms.
+
+Scripts for preprocessing are provided:
+- `utils/generate_mels.py`: Converts `.wav` to Mel spectrograms and saves them as `.npy`
+- `utils/generate_ssms.py`: Computes SSMs from Mel spectrograms and saves them as `.npy`
+
+## Model Overview
+
+- **Input**: Guitar Mel-spectrogram and Guitar SSM
+- **Output**: Drum Mel-spectrogram (and optionally Drum SSM)
+- **Model**: Transformer with cross-attention layers trained in a multitask setup
+- **Post-processing**: Diffusion model reconstructs drum audio waveform using predicted features
+
+## Project Structure
+
+```
+├── train/
+│   ├── config.py              # Configuration constants
+│   ├── transformer_train.py   # Training loop
+├── models/
+│   ├── drum_transformer.py    # Model definition (Transformer/SSM-based)
+├── utils/
+│   ├── generate_mels.py       # Converts .wav to Mel spectrograms
+│   ├── generate_ssms.py       # Converts Mel spectrograms to SSMs
+│   ├── dataset.py             # Dataset utilities
+└── README.md                  # Project overview and instructions
+```
 
