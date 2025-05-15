@@ -34,7 +34,7 @@ Scripts for preprocessing are provided:
 │   ├── config.py              # Configuration constants
 │   ├── transformer_train.py   # Training loop
 ├── models/
-│   ├── drum_transformer.py    # Model definition (Transformer/SSM-based)
+│   ├── drum_transformer.py    # Model definition (Transformer)
 ├── utils/
 │   ├── generate_mels.py       # Converts .wav to Mel spectrograms
 │   ├── generate_ssms.py       # Converts Mel spectrograms to SSMs
