@@ -1,3 +1,5 @@
+Evaluating Generative AI Drumbeats on Guitar Tracks
+
 The challenge of generating expressive and coherent drum accompaniments remains a significant barrier for solo guitarists and independent musicians. Traditional solutions such as DAW-based programming or loop libraries are either time-consuming or musically generic, often failing to reflect the intricacies of a guitarist’s performance. Prior research in this space primarily utilizes symbolic MIDI data and sequence models like RNNs or Transformers to produce drum tracks, but these often suffer from repetitive patterns, weak structural awareness, and limited audio fidelity.
 
 Our project aims to address these limitations by leveraging a hybrid architecture that combines Self-Similarity Matrices (SSMs), Transformer networks, and Diffusion Models to generate realistic and stylistically responsive drum accompaniments from guitar tracks. Unlike previous models, which separately predict rhythm and dynamics or rely on MIDI-only input, our multitask system jointly learns to predict both the drum SSM and the corresponding drum Mel-spectrogram, enhancing temporal precision and musical alignment.
