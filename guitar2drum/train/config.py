@@ -9,8 +9,8 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Audio & frame-related settings
 FRAME_RATE = 86
-INTERVAL_FRAMES = 128        # ~1.5 sec
-STRIDE_FRAMES = 64           # ~0.75 sec
+INTERVAL_FRAMES = 1290        # 15 seconds
+STRIDE_FRAMES = 946           # 11 seconds overlap
 MEL_SIZE = (128, INTERVAL_FRAMES)
 SSM_TARGET_SIZE = (64, 64)
 
@@ -21,5 +21,3 @@ VAL_SPLIT = 0.15
 
 # Checkpoint path
 CHECKPOINT_PATH = "/kaggle/working/best_model.pt"
-
-
