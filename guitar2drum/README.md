@@ -39,6 +39,7 @@ Scripts for preprocessing are provided:
 │   ├── generate_mels.py       # Converts .wav to Mel spectrograms
 │   ├── generate_ssms.py       # Converts Mel spectrograms to SSMs
 │   ├── dataset.py             # Dataset utilities
-└── README.md                  # Project overview and instructions
+├── requirements.txt           # Python dependencies
+└── README.md                   # Project overview and instructions
 ```
 
